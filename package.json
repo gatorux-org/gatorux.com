@@ -6,7 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "serve:ssr:gatorux.com": "node dist/gatorux.com/server/server.mjs"
+    "serve:ssr:gatorux.com": "node dist/gatorux.com/server/server.mjs",
+    "docker:build-image": "docker build -t gatorux-frontend-image .",
+    "docker:run-container": "docker run --name gatorux-frontend-container -d -p 4200:80 gatorux-frontend-image",
+    "docker:remove-container": "docker rm -f gatorux-frontend-container",
+    "docker:containerize": "npm run docker:build-image && npm run docker:run-container",
+    "docker:recontainerize": "npm run docker:remove-container && npm run docker:build-image && npm run docker:run-container"
   },
   "private": true,
   "dependencies": {
