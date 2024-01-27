@@ -1,28 +1,25 @@
-# Stage 1: Compile and Build angular codebase
-
-# Use official node image as the base image
+# use a node image as the base image and name it 'build' for
+# later reference
 FROM node:latest as build
 
-# Set the working directory
-WORKDIR /usr/local/app
+# set the working directory to /app
+WORKDIR /app
+# copy the current directory contents into the container at /app
+COPY . .
+# install dependencies, matching package-lock.json
+RUN npm ci
+# build the app
+RUN npm run build --production
 
-# Add the source code to app
-COPY ./ /usr/local/app/
-
-# Install all the dependencies
-RUN npm install
-
-# Generate the build of the application
-RUN npm run build
-
-
-# Stage 2: Serve app with nginx server
-
-# Use official nginx image as the base image
+# Use the latest version of the official Nginx image as the base image
 FROM nginx:latest
+# copy the custom nginx configuration file to the container in the default
+# location
+RUN rm -rf /usr/share/nginx/html/*
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+# copy the built application from the build stage to the nginx html
+# directory
+COPY --from=build /app/dist/gatorux.com /usr/share/nginx/html
 
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/gatorux.com /usr/share/nginx/html
-
-# Expose port 80
-EXPOSE 80
+# The above commands build the Angular app and then configure and build a
+# Docker image for serving it using the nginx web server.
