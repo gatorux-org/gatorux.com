@@ -1,0 +1,30 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--c-padding);
+    border-bottom: var(--bw-default) solid var(--primary); 
+    background: var(--background);
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        img {
+            border-radius: var(--br-default);
+            height: 50px;
+            width: 50px;
+        }
+        h1 {
+            color: #fff;
+        }
+    }
+    h2 {
+        color: #fff;
+    }
+    .btns {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        justify-content: center;
+    }
+}

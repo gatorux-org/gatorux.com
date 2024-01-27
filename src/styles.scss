@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap');
+
+:root {
+    --primary: rgb(214, 0, 0);
+    --background: rgb(14, 14, 14);
+    
+    --br-default: 3px;
+    --bw-default: 3px;
+
+    --c-padding: 2em 3em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    caret-color: var(--primary);
+}
+
+.btn {
+    background: var(--primary);
+    color: #fff;
+    padding: .5em 2em;
+    display: flex;
+    font-size: 1em;
+    border-radius: var(--br-default);
+    border: var(--bw-default) solid var(--primary)
+}
+
+.inverted {
+    color: var(--primary);
+    background: transparent;
+    border: var(--bw-default) solid var(--primary);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+input {
+    padding: .3em .5em;
+    border-radius: var(--br-default);
+    color: var(--primary);
+}
+
+::-moz-selection {
+    background: var(--primary);
+}
+
+::selection {
+    background: var(--primary);
+}
