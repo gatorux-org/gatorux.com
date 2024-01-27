@@ -8,6 +8,7 @@ import { RouterOutlet } from '@angular/router';
   template: `
     <h1>Welcome to {{title}}!</h1>
 
+    <h2>Testing triggers</h2>
     <router-outlet />
   `,
   styles: [],
