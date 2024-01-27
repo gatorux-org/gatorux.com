@@ -37,7 +37,7 @@ import { RouterOutlet } from '@angular/router';
   `],
 })
 export class AppComponent {
-  title = 'gatorux.com';
+  title = 'Gretl';
   count: number = 0;
 
   increment(){
